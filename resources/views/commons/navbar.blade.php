@@ -13,8 +13,25 @@ avbar-collapse-1" aria-expanded="false">
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('signup.get') }}">新規登録</a></li>
-                    <li><a href="#">ログイン</a></li>
+                    @if(Auth::check())
+                        <li>
+                            <a href="">アイテムを追加</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="">
+                                <span class="gravatar">
+                                   <img src="{{ Gravatar::src(Auth::user()->email, 20) . '&d=mm' }}" alt="" class="img-circle">
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">マイページ</a></li>
+                                <li><a href="">ログアウト</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="{{ route('signup.get') }}">新規登録</a></li>
+                        <li><a href="#">ログイン</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

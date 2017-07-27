@@ -147,6 +147,9 @@ return [
         
         //laravelcollective
         Collective\Html\HtmlServiceProvider::class,
+        
+        //Gravatar
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
     ],
 
@@ -199,6 +202,9 @@ return [
         //laravelcollective
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        
+        //Gravatar
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
     ],
 
