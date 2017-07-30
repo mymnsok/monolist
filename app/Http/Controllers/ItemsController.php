@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Item;
+
 class ItemsController extends Controller
 {
     /**
@@ -56,13 +58,13 @@ class ItemsController extends Controller
                 $item->image_url = str_replace('?_ex=128x128', '', $rws_item['Item']['mediumImageUrls'][0]['imageUrl']);
                 $items[] = $item;
             }
-            
+        }
             return view('items.create', [
                 'keyword' => $keyword, //ユーザーが入力したキーワード
                 'items' => $items, //検索結果
             ]);
         }
-    }
+
 
     /**
      * Store a newly created resource in storage.

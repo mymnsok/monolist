@@ -30,4 +30,8 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 //商品検索
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('items', 'ItemsController', ['only' => ['create']]);
+    //want
+    Route::post('want', 'ItemUserController@want')->name('item_user.want');
+    Route::delete('want', 'ItemUserController@dont_want')->name('item_user.dont_want');
+    Route::resource('users', 'UsersController', ['only' => ['show']]);
 });
