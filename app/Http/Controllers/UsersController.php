@@ -55,6 +55,7 @@ class UsersController extends Controller
         $user = User::find($id);
         
         $count_want = $user->want_items()->count();
+        $count_have = $user->have_items()->count();
         
         $items=[];
         
@@ -74,7 +75,7 @@ class UsersController extends Controller
                 'user' => $user,
                 'items' => $items,
                 'count_want' => $count_want,
-                //'count_have' => $count_have,
+                'count_have' => $count_have,
             ]);
 
     }
