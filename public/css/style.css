@@ -76,7 +76,7 @@ footer {
 .item .panel-body {
     height: 120px;
 }
-.item .buttons form {
+.item .button form {
     display: inline-block;
     margin: 0 5px;
 }
