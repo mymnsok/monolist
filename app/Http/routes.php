@@ -18,26 +18,30 @@ Route::get('/', function () {
 
 Route::get('/', 'WelcomeController@index');
 
-//ユーザー登録
+//　ユーザー登録
 Route::get('signup', 'Auth\AuthController@getRegister')->name('signup.get');
 Route::post('signup', 'Auth\AuthController@postRegister')->name('signup.post');
 
-//ログイン認証
+//　ログイン認証
 Route::get('login', 'Auth\AuthController@getLogin')->name('login.get');
 Route::post('login', 'Auth\AuthController@postLogin')->name('login.post');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
-//商品検索
+//　ランキング
+Route::get('ranking/want', 'RankingController@want')->name('ranking.want');
+
+//　商品検索
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('items', 'ItemsController', ['only' => ['create']]);
     //want
     Route::post('want', 'ItemUserController@want')->name('item_user.want');
     Route::delete('want', 'ItemUserController@dont_want')->name('item_user.dont_want');
     
-    //have
+    //　have
     Route::post('have', 'ItemUserController@have')->name('item_user.have');
     Route::delete('have', 'ItemUserController@dont_have')->name('item_user.dont_have');
 
-    //マイページ
+    //　マイページ
     Route::resource('users', 'UsersController', ['only' => ['show']]);
+
 });
